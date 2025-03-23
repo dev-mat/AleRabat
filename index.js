@@ -6,6 +6,7 @@ const ERROR_FILE_NAME = "error.txt";
 const WORKING_CODES_FILE_NAME = "workingCodes.txt";
 const BEST_CODE_FILE_NAME = "bestCode.txt";
 const MAX_WAITING_TIME = 10000;
+const HEADLESS_MODE = true;
 const NUMBER_REGEXP = /\d+/;
 const SUCCESS_PARAGRAPH_SELECTOR = '::-p-xpath(//p[text()="Kod rabatowy: -"])';
 const FAILURE_PARAGRAPH_SELECTOR =
@@ -32,7 +33,7 @@ const codes = new Set([
     let bestCode = null;
 
     //Switch headless to false for chrome graphical mode
-    browser = await puppeteer.launch({ headless: false });
+    browser = await puppeteer.launch({ headless: HEADLESS_MODE });
     const page = await browser.newPage();
     await page.goto(WEBSITE_URL);
 
