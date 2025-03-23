@@ -3,8 +3,8 @@ const fs = require("fs/promises");
 
 const WEBSITE_URL = "https://dev-shop-integration.alerabat.com/";
 const ERROR_FILE_NAME = "error.txt";
-const WORKING_CODES_FILE_NAME = "workingCodes.txt";
-const BEST_CODE_FILE_NAME = "bestCode.txt";
+const VALID_CODES_FILE_NAME = "valid_codes.txt";
+const BEST_CODE_FILE_NAME = "best_code.txt";
 const MAX_WAITING_TIME = 10000;
 const HEADLESS_MODE = true;
 const NUMBER_REGEXP = /\d+/;
@@ -29,7 +29,7 @@ const codes = new Set([
   let browser = null;
 
   try {
-    const workingCodes = new Set();
+    const validCodes = new Set();
     let bestCode = null;
 
     //Switch headless to false for chrome graphical mode
@@ -88,7 +88,7 @@ const codes = new Set([
       ]);
 
       if (result.status === "success") {
-        workingCodes.add(code);
+        validCodes.add(code);
         bestCode = findBetterCode(bestCode, code, result.discount);
       }
 
@@ -99,10 +99,10 @@ const codes = new Set([
       await clickApplyButton();
     }
 
-    if (workingCodes.size > 0) {
+    if (validCodes.size > 0) {
       await fs.writeFile(
-        WORKING_CODES_FILE_NAME,
-        Array.from(workingCodes).join("\r\n")
+        VALID_CODES_FILE_NAME,
+        Array.from(validCodes).join("\r\n")
       );
     }
 

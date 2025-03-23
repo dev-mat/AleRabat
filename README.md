@@ -13,8 +13,8 @@
 
 **Files contains:**
 
-- workingCodes.txt - working promo codes _( if there are no working promo codes the file may not exist )_
-- bestCode.txt - promo code that let you save the most _( if there are no working promo codes the file may not exist )_
+- valid*codes.txt - valid promo codes *( if there are no valid promo codes the file may not exist )\_
+- best*code.txt - promo code that let you save the most *( if there are no valid promo codes the file may not exist )\_
 - error.txt - error logs _( this file will be created only when error occurs )_
 
 # Have fun!
